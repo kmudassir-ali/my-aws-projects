@@ -27,3 +27,7 @@ Step 5: Create Pipeline from CodePipeline
       Deployment Group
 
       Then Create PipeLine
+
+Step 6: Test code PipeLine
+    1. Copy the Public DNS from EC2 Instance and access it from browser
+    2. modifle the index.html and upload the changes to S3. Check the status of pipeline. CloudWatch automatically deploy the changes.
