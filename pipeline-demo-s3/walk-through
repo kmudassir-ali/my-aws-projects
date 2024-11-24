@@ -1,0 +1,29 @@
+Step 1: Create S3 Bucket and enable versioning
+Step 2: Create Two roles using IAM for EC2 Instance Services
+    AmazonEC2RoleForAWSCodeDeply
+    AmazonSSManagedInstanceCore
+Step 3: Create EC2 Instance - AWS Amazon Linux.
+    Proceed with out keypair
+    SSH and HTTP - MyIP
+    IAM Intance Profile - Choose the above created IAM roles 
+Step 4: Create CodeDeploy
+    Create a CodeDeploy Service Role using IAM
+    AWSCodeDeployRole
+    Then Create CodeDeploy, then Create Application, Enter App name and Instance Type (EC2/On Premises)
+    Then Create DeploymentGroup, Enter name, Service Role, Deployment Type - In Place
+        Environment Config -> Amazon EC2
+        Enter Key and Value 
+    Deployment Config -> OneAtATime
+    Uncheck - Enable Load Balancing
+Step 5: Create Pipeline from CodePipeline
+    Enter PipeLine name
+    Pipe Line Type - V2
+    Service Role - New Role
+    Source - S3 -> Select bucket name
+    Skip Build Stage
+    Add Deployment Stage -> Deploy Provider
+      CodeDeploy As Provider
+      Application
+      Deployment Group
+
+      Then Create PipeLine
